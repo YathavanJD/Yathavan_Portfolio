@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of Loganathan Yathavan, final-year Computer Science undergraduate specializing in full-stack development and backend engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -19,6 +19,7 @@
   <a href="#contact">Contact</a>
 </nav>
 
+<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
@@ -56,6 +57,7 @@
   </button>
 </section>
 
+<!-- ============ ABOUT ============ -->
 <section class="minimal" id="about">
   <div class="minimal-wrap">
     <div class="eyebrow" data-reveal>About</div>
@@ -97,71 +99,167 @@
   </div>
 </section>
 
+<!-- ============ PROJECTS — HORIZON MOSAIC ============ -->
 <section class="brutal" id="projects">
   <div class="brutal-head" data-reveal>
     <div class="eyebrow">Selected work</div>
     <h2>Built, broken, fixed,<br>shipped.</h2>
+    <p class="brutal-sub">7 repositories · All on GitHub</p>
   </div>
-  <div class="brutal-grid">
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">Final Year Project</span>
-      <h3>AI Music Recommendation System</h3>
-      <p>An intelligent recommendation platform that suggests songs based on listening behavior and preference patterns — covering data preprocessing, preference analysis, and scalable recommendation workflows.</p>
-      <span class="stack">Python · ML Concepts</span>
-      <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+  <!-- HORIZON MOSAIC GRID -->
+  <div class="mosaic">
+
+    <!-- ROW 1: featured wide + tall side -->
+    <div class="mosaic-row row-featured">
+
+      <div class="bcard bcard-featured" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag tag-accent">✦ Final Year Project</span>
+            <span class="bcard-num">01</span>
+          </div>
+          <h3>AI Music Recommendation System</h3>
+          <p>An intelligent recommendation platform that suggests songs based on listening behaviour and preference patterns — covering data preprocessing, preference analysis, and scalable recommendation workflows.</p>
+          <div class="bcard-footer">
+            <span class="stack">Python · ML Concepts · Data Preprocessing</span>
+            <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">♫</div>
+      </div>
+
+      <div class="bcard bcard-tall" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag">Android</span>
+            <span class="bcard-num">02</span>
+          </div>
+          <h3>Cabzo — Car Booking App</h3>
+          <p>A ride-booking system with ride request management, a mobile-optimised UI, and live ride tracking functionality built entirely in Android Studio.</p>
+          <div class="bcard-footer">
+            <span class="stack">Java · Android Studio</span>
+            <a class="repo-link" href="https://github.com/YathavanJD/Cabzo" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">🚗</div>
+      </div>
+
     </div>
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">Full Stack</span>
-      <h3>SK Metal Shop</h3>
-      <p>Product, inventory, and order management platform with live stock monitoring, customer authentication, shopping cart, checkout, and an admin dashboard.</p>
-      <span class="stack">HTML · CSS · JS · PHP · MySQL</span>
-      <a class="repo-link" href="https://github.com/YathavanJD/SK_Metal-shop" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+    <!-- ROW 2: three equal columns -->
+    <div class="mosaic-row row-trio">
+
+      <div class="bcard" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag">Full Stack</span>
+            <span class="bcard-num">03</span>
+          </div>
+          <h3>SK Metal Shop</h3>
+          <p>Product, inventory, and order management platform with live stock monitoring, customer authentication, shopping cart, checkout, and an admin dashboard.</p>
+          <div class="bcard-footer">
+            <span class="stack">HTML · CSS · JS · PHP · MySQL</span>
+            <a class="repo-link" href="https://github.com/YathavanJD/SK_Metal-shop" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">⚙</div>
+      </div>
+
+      <div class="bcard" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag">Web App</span>
+            <span class="bcard-num">04</span>
+          </div>
+          <h3>Student Management System</h3>
+          <p>A dynamic student management application with real-time data updates, responsive UI, and efficient record handling powered by AJAX.</p>
+          <div class="bcard-footer">
+            <span class="stack">AJAX · JSON · jQuery</span>
+            <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">📋</div>
+      </div>
+
+      <div class="bcard" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag">E-commerce</span>
+            <span class="bcard-num">05</span>
+          </div>
+          <h3>Wrap It Up — Cake Shop</h3>
+          <p>A responsive product browsing and ordering site with mobile-friendly layout, built for a small cake business.</p>
+          <div class="bcard-footer">
+            <span class="stack">HTML · CSS · JavaScript</span>
+            <a class="repo-link" href="https://github.com/YathavanJD/Cake_web" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">🎂</div>
+      </div>
+
     </div>
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">Android</span>
-      <h3>Cabzo — Car Booking App</h3>
-      <p>A ride-booking system with ride request management, a mobile-optimized UI, and live ride tracking functionality.</p>
-      <span class="stack">Java · Android Studio</span>
-      <a class="repo-link" href="https://github.com/YathavanJD/Cabzo" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-    </div>
+    <!-- ROW 3: wide + small stack -->
+    <div class="mosaic-row row-duo">
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">Web App</span>
-      <h3>Student Management System</h3>
-      <p>A dynamic student management application with real-time data updates, responsive UI, and efficient record handling.</p>
-      <span class="stack">AJAX · JSON · jQuery</span>
-      <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-    </div>
+      <div class="bcard bcard-wide" data-reveal data-tilt>
+        <div class="bcard-inner">
+          <div class="bcard-top">
+            <span class="tag">Multi-Page Website</span>
+            <span class="bcard-num">06</span>
+          </div>
+          <h3>Vertex Digital Solutions</h3>
+          <p>A responsive 4-page marketing website for a software and cloud consultancy, featuring consistent design tokens, accessible navigation, and a validated contact form — no build tools required.</p>
+          <div class="bcard-footer">
+            <span class="stack">HTML · CSS · JavaScript</span>
+            <a class="repo-link" href="https://github.com/YathavanJD/Vertex_Degital" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="bcard-glyph">◈</div>
+      </div>
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">E-commerce</span>
-      <h3>Wrap It Up — Cake Shop</h3>
-      <p>A responsive product browsing and ordering site with a mobile-friendly layout, built for a small cake business.</p>
-      <span class="stack">HTML · CSS · JS</span>
-      <a class="repo-link" href="https://github.com/YathavanJD/Cake_web" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-    </div>
+      <div class="mosaic-stack">
 
-    <div class="bcard" data-reveal data-tilt>
-      <span class="tag">OOP Project</span>
-      <h3>Car Wash Management System</h3>
-      <p>A Java application built around core OOP concepts — classes, objects, inheritance, and encapsulation — for managing a car wash business.</p>
-      <span class="stack">Java · OOP</span>
-      <a class="repo-link" href="https://github.com/YathavanJD/Car_wash_managenent_system" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+        <div class="bcard bcard-mini" data-reveal data-tilt>
+          <div class="bcard-inner">
+            <div class="bcard-top">
+              <span class="tag">OOP Project</span>
+              <span class="bcard-num">07</span>
+            </div>
+            <h3>Car Wash Management System</h3>
+            <p>Java application built around core OOP concepts for managing a car wash business — classes, inheritance, encapsulation.</p>
+            <div class="bcard-footer">
+              <span class="stack">Java · OOP</span>
+              <a class="repo-link" href="https://github.com/YathavanJD/Car_wash_managenent_system" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+            </div>
+          </div>
+          <div class="bcard-glyph">🧼</div>
+        </div>
+
+        <div class="bcard bcard-mini bcard-quiz" data-reveal data-tilt>
+          <div class="bcard-inner">
+            <div class="bcard-top">
+              <span class="tag">Android / Web</span>
+              <span class="bcard-num">★</span>
+            </div>
+            <h3>Quiz Games — HeartQuist & KnowledgeKnockout</h3>
+            <p>Two interactive quiz apps — a web-based JS game and an Android quiz app — with dynamic scoring and engaging UX.</p>
+            <div class="bcard-footer">
+              <span class="stack">JavaScript · Java · Android Studio</span>
+              <a class="repo-link" href="https://github.com/YathavanJD/heart-quist" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+            </div>
+          </div>
+          <div class="bcard-glyph">🧠</div>
+        </div>
+
+      </div>
     </div>
-    <div class="bcard" data-reveal data-tilt>
-  <span class="tag">Multi-Page Website</span>
-  <h3>Vertex Digital Solutions</h3>
-  <p>A responsive 4-page marketing website for a software and cloud consultancy, featuring consistent design tokens, accessible navigation, and a validated contact form — no build tools required.</p>
-  <span class="stack">HTML · CSS · JavaScript</span>
-  <a class="repo-link" href="https://github.com/YathavanJD/Vertex_Degital" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-</div>
 
   </div>
 </section>
 
+<!-- ============ JOURNAL ============ -->
 <section class="skeu" id="journal">
   <div class="notebook" data-reveal>
     <div class="eyebrow">Field notes</div>
@@ -196,6 +294,7 @@
   </div>
 </section>
 
+<!-- ============ CONTACT ============ -->
 <section class="contact" id="contact">
   <div class="blob blob1" style="top:-200px;left:10%;"></div>
   <div class="blob blob2" style="bottom:-200px;right:5%;"></div>
@@ -253,7 +352,7 @@
 </button>
 
 <div id="chatWindow" class="chat-window" aria-hidden="true">
-  <div class="chat-header">
+  <div class="chat-header"> 
     <div class="chat-header-info">
       <div class="chat-avatar"><img src="assets/image/profile.jpeg" alt=""></div>
       <div>
@@ -273,7 +372,7 @@
   </form>
 </div>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="main.js"></script>
+<script src="chatbot.js"></script>
 </body>
 </html>
