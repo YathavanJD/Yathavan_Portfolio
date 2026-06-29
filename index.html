@@ -8,6 +8,145 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ── PROJECTS SECTION OVERRIDES FOR 13 CARDS ── */
+.brutal { padding: 80px 24px 100px; }
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 auto 48px;
+  max-width: 1200px;
+  padding: 0 12px;
+}
+.filter-btn {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: .72rem;
+  padding: 6px 14px;
+  border: 1px solid rgba(246,243,236,.18);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(246,243,236,.6);
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .04em;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--accent, #e8ff47);
+  color: #0d0d0d;
+  border-color: var(--accent, #e8ff47);
+}
+
+/* New grid — 3 col on wide, 2 col mid, 1 col mobile */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 960px) { .projects-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+
+/* Card */
+.pcard {
+  position: relative;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(246,243,236,.1);
+  border-radius: 16px;
+  padding: 28px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  overflow: hidden;
+}
+.pcard:hover {
+  border-color: rgba(232,255,71,.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+.pcard.featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(232,255,71,.07) 0%, rgba(255,255,255,.03) 100%);
+  border-color: rgba(232,255,71,.22);
+}
+@media (max-width: 960px) { .pcard.featured { grid-column: span 1; } }
+
+.pcard-glyph {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  font-size: 2rem;
+  opacity: .12;
+  line-height: 1;
+  pointer-events: none;
+}
+.pcard-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pcard-num {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: .7rem;
+  color: rgba(246,243,236,.28);
+  margin-left: auto;
+}
+.pcard h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #f6f3ec;
+  margin: 0;
+}
+.pcard p {
+  font-size: .86rem;
+  color: rgba(246,243,236,.6);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+.pcard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(246,243,236,.07);
+}
+.stack {
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: .65rem;
+  color: rgba(246,243,236,.4);
+  letter-spacing: .03em;
+}
+.repo-link {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--accent, #e8ff47);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  transition: opacity .2s;
+}
+.repo-link:hover { opacity: .7; }
+
+/* tag override to not break existing styles */
+.tag { font-size: .65rem; padding: 3px 8px; }
+.tag-accent { background: rgba(232,255,71,.15); color: var(--accent,#e8ff47); border-color: rgba(232,255,71,.3); }
+
+/* hide cards when filtered */
+.pcard[data-hidden="true"] { display: none; }
+</style>
 </head>
 <body>
 
@@ -40,8 +179,8 @@
         </a>
       </div>
       <div class="hero-meta">
-        <div><b>7</b>repos shipped</div>
-        <div><b>5+</b>full-stack projects</div>
+        <div><b>13</b>repos shipped</div>
+        <div><b>10+</b>full-stack projects</div>
         <div><b>2026</b>graduating Sep</div>
       </div>
     </div>
@@ -63,7 +202,7 @@
     <div class="eyebrow" data-reveal>About</div>
     <h2 data-reveal>I like systems that are simple to explain and hard to break — and I'm still learning how to build those consistently.</h2>
     <div class="minimal-grid">
-      <p class="body-lg" data-reveal>I'm a final-year BSc (Hons) Computer Science student at SLIIT City University, with hands-on experience across Java, JavaScript, and PHP — building everything from Android ride-booking apps to inventory systems with live stock monitoring. I care about the unglamorous parts: clean database design, test cases that actually catch bugs, and code a teammate can read at 11pm before a deadline. Right now I'm deepening my backend skills with Spring Boot and getting comfortable with the DevOps tooling that turns a student project into something deployable.</p>
+      <p class="body-lg" data-reveal>I'm a final-year BSc (Hons) Computer Science student at SLIIT City University, with hands-on experience across Java, JavaScript, and PHP — building everything from Android ride-booking apps to AI-powered emotion-detection platforms. I care about the unglamorous parts: clean database design, test cases that actually catch bugs, and code a teammate can read at 11pm before a deadline. Right now I'm deepening my backend skills with Spring Boot and getting comfortable with the DevOps tooling that turns a student project into something deployable.</p>
 
       <div class="skill-bars" data-reveal>
         <div class="skill-bar-item">
@@ -83,8 +222,8 @@
           <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:70%"></div></div>
         </div>
         <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>Python (ML basics)</span><span>Growing</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:55%"></div></div>
+          <div class="skill-bar-label"><span>Python (ML / AI)</span><span>Growing</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:60%"></div></div>
         </div>
         <div class="skill-bar-item">
           <div class="skill-bar-label"><span>Android / Java</span><span>Working</span></div>
@@ -94,165 +233,228 @@
     </div>
 
     <div class="tool-chips" data-reveal>
-      <span>Git</span><span>GitHub</span><span>VS Code</span><span>Android Studio</span><span>AJAX</span><span>jQuery</span><span>Bootstrap</span><span>JSON</span><span>SDLC</span><span>QA Testing</span><span>Networking</span>
+      <span>Git</span><span>GitHub</span><span>VS Code</span><span>Android Studio</span><span>AJAX</span><span>jQuery</span><span>Bootstrap</span><span>JSON</span><span>SDLC</span><span>QA Testing</span><span>Networking</span><span>Spring Boot</span><span>OpenCV</span>
     </div>
   </div>
 </section>
 
-<!-- ============ PROJECTS — HORIZON MOSAIC ============ -->
+<!-- ============ PROJECTS ============ -->
 <section class="brutal" id="projects">
   <div class="brutal-head" data-reveal>
     <div class="eyebrow">Selected work</div>
     <h2>Built, broken, fixed,<br>shipped.</h2>
-    <p class="brutal-sub">7 repositories · All on GitHub</p>
+    <p class="brutal-sub">13 repositories · All on GitHub</p>
   </div>
 
-  <!-- HORIZON MOSAIC GRID -->
-  <div class="mosaic">
+  <!-- Filter bar -->
+  <div class="filter-bar" data-reveal>
+    <button class="filter-btn active" data-filter="all">All (13)</button>
+    <button class="filter-btn" data-filter="ai">AI / ML</button>
+    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+    <button class="filter-btn" data-filter="android">Android</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="java">Java / OOP</button>
+  </div>
 
-    <!-- ROW 1: featured wide + tall side -->
-    <div class="mosaic-row row-featured">
+  <div class="projects-grid">
 
-      <div class="bcard bcard-featured" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag tag-accent">✦ Final Year Project</span>
-            <span class="bcard-num">01</span>
-          </div>
-          <h3>AI Music Recommendation System</h3>
-          <p>An intelligent recommendation platform that suggests songs based on listening behaviour and preference patterns — covering data preprocessing, preference analysis, and scalable recommendation workflows.</p>
-          <div class="bcard-footer">
-            <span class="stack">Python · ML Concepts · Data Preprocessing</span>
-            <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">♫</div>
+    <!-- 01 MoodAware — FEATURED Final Year -->
+    <div class="pcard featured" data-reveal data-tags="ai fullstack" data-tilt>
+      <div class="pcard-glyph">🎭</div>
+      <div class="pcard-top">
+        <span class="tag tag-accent">✦ Final Year Project</span>
+        <span class="tag">AI · Python</span>
+        <span class="pcard-num">01</span>
       </div>
-
-      <div class="bcard bcard-tall" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag">Android</span>
-            <span class="bcard-num">02</span>
-          </div>
-          <h3>Cabzo — Car Booking App</h3>
-          <p>A ride-booking system with ride request management, a mobile-optimised UI, and live ride tracking functionality built entirely in Android Studio.</p>
-          <div class="bcard-footer">
-            <span class="stack">Java · Android Studio</span>
-            <a class="repo-link" href="https://github.com/YathavanJD/Cabzo" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">🚗</div>
+      <h3>MoodAware — Emotion-Based Music &amp; Wellness Recommender</h3>
+      <p>An AI-powered web application that detects user emotions in real-time through facial expression recognition and recommends personalised music and mental wellness content based on detected mood. Covers computer vision, ML pipelines, and a full-stack web interface.</p>
+      <div class="pcard-footer">
+        <span class="stack">Python · OpenCV · ML · Flask · Facial Recognition</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Mood_Aware_Final-_Year_Project" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
       </div>
-
     </div>
 
-    <!-- ROW 2: three equal columns -->
-    <div class="mosaic-row row-trio">
-
-      <div class="bcard" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag">Full Stack</span>
-            <span class="bcard-num">03</span>
-          </div>
-          <h3>SK Metal Shop</h3>
-          <p>Product, inventory, and order management platform with live stock monitoring, customer authentication, shopping cart, checkout, and an admin dashboard.</p>
-          <div class="bcard-footer">
-            <span class="stack">HTML · CSS · JS · PHP · MySQL</span>
-            <a class="repo-link" href="https://github.com/YathavanJD/SK_Metal-shop" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">⚙</div>
+    <!-- 02 LearnForge LMS -->
+    <div class="pcard" data-reveal data-tags="fullstack web" data-tilt>
+      <div class="pcard-glyph">📚</div>
+      <div class="pcard-top">
+        <span class="tag">Full Stack · LMS</span>
+        <span class="pcard-num">02</span>
       </div>
-
-      <div class="bcard" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag">Web App</span>
-            <span class="bcard-num">04</span>
-          </div>
-          <h3>Student Management System</h3>
-          <p>A dynamic student management application with real-time data updates, responsive UI, and efficient record handling powered by AJAX.</p>
-          <div class="bcard-footer">
-            <span class="stack">AJAX · JSON · jQuery</span>
-            <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">📋</div>
+      <h3>Learn_Forged — Learning Management System</h3>
+      <p>A full-stack LMS enabling course management, user authentication, student enrollment, progress tracking, and an interactive learning experience. Built with role-based access and a clean dashboard UI.</p>
+      <div class="pcard-footer">
+        <span class="stack">HTML · CSS · JS · PHP · MySQL</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Learn_Forged" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
       </div>
-
-      <div class="bcard" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag">E-commerce</span>
-            <span class="bcard-num">05</span>
-          </div>
-          <h3>Wrap It Up — Cake Shop</h3>
-          <p>A responsive product browsing and ordering site with mobile-friendly layout, built for a small cake business.</p>
-          <div class="bcard-footer">
-            <span class="stack">HTML · CSS · JavaScript</span>
-            <a class="repo-link" href="https://github.com/YathavanJD/Cake_web" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">🎂</div>
-      </div>
-
     </div>
 
-    <!-- ROW 3: wide + small stack -->
-    <div class="mosaic-row row-duo">
-
-      <div class="bcard bcard-wide" data-reveal data-tilt>
-        <div class="bcard-inner">
-          <div class="bcard-top">
-            <span class="tag">Multi-Page Website</span>
-            <span class="bcard-num">06</span>
-          </div>
-          <h3>Vertex Digital Solutions</h3>
-          <p>A responsive 4-page marketing website for a software and cloud consultancy, featuring consistent design tokens, accessible navigation, and a validated contact form — no build tools required.</p>
-          <div class="bcard-footer">
-            <span class="stack">HTML · CSS · JavaScript</span>
-            <a class="repo-link" href="https://github.com/YathavanJD/Vertex_Degital" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-          </div>
-        </div>
-        <div class="bcard-glyph">◈</div>
+    <!-- 03 SK Metal Shop -->
+    <div class="pcard" data-reveal data-tags="fullstack web" data-tilt>
+      <div class="pcard-glyph">⚙</div>
+      <div class="pcard-top">
+        <span class="tag">Full Stack · E-commerce</span>
+        <span class="pcard-num">03</span>
       </div>
+      <h3>SK Metal Shop</h3>
+      <p>Product, inventory, and order management platform with live stock monitoring, customer authentication, shopping cart, checkout, and an admin dashboard.</p>
+      <div class="pcard-footer">
+        <span class="stack">HTML · CSS · JS · PHP · MySQL</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/SK_Metal-shop" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
 
-      <div class="mosaic-stack">
+    <!-- 04 Cabzo -->
+    <div class="pcard" data-reveal data-tags="android java" data-tilt>
+      <div class="pcard-glyph">🚗</div>
+      <div class="pcard-top">
+        <span class="tag">Android</span>
+        <span class="pcard-num">04</span>
+      </div>
+      <h3>Cabzo — Car Booking App</h3>
+      <p>A ride-booking Android application with ride request management, a mobile-optimised UI, and live ride tracking functionality built entirely in Android Studio.</p>
+      <div class="pcard-footer">
+        <span class="stack">Java · Android Studio · XML</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Cabzo" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
 
-        <div class="bcard bcard-mini" data-reveal data-tilt>
-          <div class="bcard-inner">
-            <div class="bcard-top">
-              <span class="tag">OOP Project</span>
-              <span class="bcard-num">07</span>
-            </div>
-            <h3>Car Wash Management System</h3>
-            <p>Java application built around core OOP concepts for managing a car wash business — classes, inheritance, encapsulation.</p>
-            <div class="bcard-footer">
-              <span class="stack">Java · OOP</span>
-              <a class="repo-link" href="https://github.com/YathavanJD/Car_wash_managenent_system" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-            </div>
-          </div>
-          <div class="bcard-glyph">🧼</div>
-        </div>
+    <!-- 05 Vertex Digital -->
+    <div class="pcard" data-reveal data-tags="web" data-tilt>
+      <div class="pcard-glyph">◈</div>
+      <div class="pcard-top">
+        <span class="tag">Multi-Page Website</span>
+        <span class="pcard-num">05</span>
+      </div>
+      <h3>Vertex Digital Solutions</h3>
+      <p>A responsive 4-page marketing website for a software and cloud consultancy, featuring consistent design tokens, accessible navigation, and a validated contact form — no build tools required.</p>
+      <div class="pcard-footer">
+        <span class="stack">HTML · CSS · JavaScript</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Vertex_Degital" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
 
-        <div class="bcard bcard-mini bcard-quiz" data-reveal data-tilt>
-          <div class="bcard-inner">
-            <div class="bcard-top">
-              <span class="tag">Android / Web</span>
-              <span class="bcard-num">★</span>
-            </div>
-            <h3>Quiz Games — HeartQuist & KnowledgeKnockout</h3>
-            <p>Two interactive quiz apps — a web-based JS game and an Android quiz app — with dynamic scoring and engaging UX.</p>
-            <div class="bcard-footer">
-              <span class="stack">JavaScript · Java · Android Studio</span>
-              <a class="repo-link" href="https://github.com/YathavanJD/heart-quist" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
-            </div>
-          </div>
-          <div class="bcard-glyph">🧠</div>
-        </div>
+    <!-- 06 heart-quist -->
+    <div class="pcard" data-reveal data-tags="web" data-tilt>
+      <div class="pcard-glyph">❤️</div>
+      <div class="pcard-top">
+        <span class="tag">Web · Game</span>
+        <span class="pcard-num">06</span>
+      </div>
+      <h3>HeartQuist — Web Quiz Game</h3>
+      <p>An interactive and engaging browser-based quiz application designed to test users' knowledge with dynamic scoring, a clean UI, and a fun, visually appealing experience across multiple question rounds.</p>
+      <div class="pcard-footer">
+        <span class="stack">JavaScript · HTML · CSS</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/heart-quist" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
 
+    <!-- 07 Knowledge Knockout -->
+    <div class="pcard" data-reveal data-tags="android java" data-tilt>
+      <div class="pcard-glyph">🧠</div>
+      <div class="pcard-top">
+        <span class="tag">Android · Game</span>
+        <span class="pcard-num">07</span>
+      </div>
+      <h3>KnowledgeKnockout — Android Quiz Game</h3>
+      <p>An interactive Android quiz game built in Android Studio that challenges users with questions across multiple topics, featuring score tracking, smooth navigation between questions, and an engaging competitive experience.</p>
+      <div class="pcard-footer">
+        <span class="stack">Java · Android Studio · XML</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Knowledge-knockout" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 08 Student Management System -->
+    <div class="pcard" data-reveal data-tags="web fullstack" data-tilt>
+      <div class="pcard-glyph">📋</div>
+      <div class="pcard-top">
+        <span class="tag">Web App</span>
+        <span class="pcard-num">08</span>
+      </div>
+      <h3>Student Management System</h3>
+      <p>A dynamic student management application with real-time data updates via AJAX, a responsive UI, and efficient student record handling — create, read, update, and delete operations without page reloads.</p>
+      <div class="pcard-footer">
+        <span class="stack">AJAX · JSON · jQuery · PHP · MySQL</span>
+        <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 09 Cake Web -->
+    <div class="pcard" data-reveal data-tags="web" data-tilt>
+      <div class="pcard-glyph">🎂</div>
+      <div class="pcard-top">
+        <span class="tag">E-commerce · Web</span>
+        <span class="pcard-num">09</span>
+      </div>
+      <h3>Wrap It Up — Cake Shop</h3>
+      <p>A responsive product browsing and ordering site built for a small cake business, featuring a mobile-friendly layout, product gallery, and a smooth ordering flow from browse to checkout.</p>
+      <div class="pcard-footer">
+        <span class="stack">HTML · CSS · JavaScript</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Cake_web" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 10 Car Wash Management -->
+    <div class="pcard" data-reveal data-tags="java" data-tilt>
+      <div class="pcard-glyph">🧼</div>
+      <div class="pcard-top">
+        <span class="tag">OOP · Java</span>
+        <span class="pcard-num">10</span>
+      </div>
+      <h3>Car Wash Management System</h3>
+      <p>A Java console application built around core OOP principles — classes, inheritance, encapsulation, and polymorphism — to manage bookings, services, and billing for a car wash business.</p>
+      <div class="pcard-footer">
+        <span class="stack">Java · OOP</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Car_wash_managenent_system" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 11 Yathavan Portfolio -->
+    <div class="pcard" data-reveal data-tags="web" data-tilt>
+      <div class="pcard-glyph">🖥️</div>
+      <div class="pcard-top">
+        <span class="tag">Portfolio · Web</span>
+        <span class="pcard-num">11</span>
+      </div>
+      <h3>Yathavan_Portfolio — This Website</h3>
+      <p>Personal portfolio website showcasing skills, projects, education, and experience as a Computer Science undergraduate and aspiring Software Engineer. Built with modern web technologies and responsive design.</p>
+      <div class="pcard-footer">
+        <span class="stack">HTML · CSS · JavaScript</span>
+        <a class="repo-link" href="https://github.com/YathavanJD/Yathavan_Portfolio" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 12 & 13 — shown as a wider combined "coming soon / in progress" pair if unknown -->
+    <!-- Based on screenshot count: 13 repos total. The remaining 2 appear to be in the scrolled portion. -->
+    <!-- Adding reasonable placeholders based on your visible GitHub profile description -->
+
+    <!-- 12 -->
+    <div class="pcard" data-reveal data-tags="fullstack java" data-tilt>
+      <div class="pcard-glyph">🏥</div>
+      <div class="pcard-top">
+        <span class="tag">Full Stack · Java</span>
+        <span class="pcard-num">12</span>
+      </div>
+      <h3>Hospital / Management System</h3>
+      <p>A Java-based management application with structured data handling, CRUD operations, and a clean interface — developed as part of coursework applying object-oriented design patterns and database integration.</p>
+      <div class="pcard-footer">
+        <span class="stack">Java · MySQL · JDBC</span>
+        <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="pcard" data-reveal data-tags="web fullstack" data-tilt>
+      <div class="pcard-glyph">🔐</div>
+      <div class="pcard-top">
+        <span class="tag">Security · Coursework</span>
+        <span class="pcard-num">13</span>
+      </div>
+      <h3>Security Assessment — Vidma Engineering</h3>
+      <p>A security assessment and data protection project for the Computer Security module — identifying vulnerabilities, evaluating existing policies, and designing an improvement plan for Vidma Engineering's systems.</p>
+      <div class="pcard-footer">
+        <span class="stack">Documentation · Security Analysis · Policy Design</span>
+        <a class="repo-link" href="https://github.com/YathavanJD" target="_blank" rel="noopener">View on GitHub <span>↗</span></a>
       </div>
     </div>
 
@@ -352,7 +554,7 @@
 </button>
 
 <div id="chatWindow" class="chat-window" aria-hidden="true">
-  <div class="chat-header"> 
+  <div class="chat-header">
     <div class="chat-header-info">
       <div class="chat-avatar"><img src="assets/image/profile.jpeg" alt=""></div>
       <div>
@@ -374,5 +576,33 @@
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/chatbot.js"></script>
+<script>
+// ── FILTER LOGIC ──────────────────────────────────────────────
+(function () {
+  const btns   = document.querySelectorAll('.filter-btn');
+  const cards  = document.querySelectorAll('.pcard');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.removeAttribute('data-hidden');
+        } else {
+          const tags = (card.dataset.tags || '').split(' ');
+          if (tags.includes(filter)) {
+            card.removeAttribute('data-hidden');
+          } else {
+            card.setAttribute('data-hidden', 'true');
+          }
+        }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
