@@ -59,7 +59,27 @@ npm run preview
 
 ## 📦 Deploying
 
-Any static host works. Three common options:
+### Render (recommended)
+
+This site is a static build, so deploy it on Render as a **Static Site**, not a Web Service:
+
+1. Push this project to a GitHub (or GitLab) repo
+2. In the Render dashboard: **New → Static Site**
+3. Connect the repo, then set:
+   | Setting | Value |
+   |---|---|
+   | Build Command | `npm run build` |
+   | Publish Directory | `dist` |
+4. Click **Create Static Site** — Render installs dependencies, runs the build, and deploys `dist/` automatically
+5. You get a free `your-app-name.onrender.com` URL, with an option to attach a custom domain under the site's **Settings → Custom Domains**
+
+**Redeploys:** Render auto-deploys on every push to the connected branch by default — just `git push` and the live site updates. No need to run `npm run build` locally or upload anything manually.
+
+**SPA routing note:** this project only uses in-page anchor links (`#work`, `#about`, etc.), so no rewrite rule is needed. If you later add client-side routes (React Router), add a rewrite rule in Render's **Redirects/Rewrites** settings: source `/*`, destination `/index.html`, action `Rewrite`.
+
+### Other static hosts
+
+Any static host works the same way — build command `npm run build`, publish directory `dist`:
 
 **GitHub Pages**
 1. Run `npm run build`
@@ -69,9 +89,6 @@ Any static host works. Three common options:
 **Netlify / Vercel**
 1. Run `npm run build`
 2. Drag the `dist/` folder into [Netlify Drop](https://app.netlify.com/drop), or connect the repo and set build command `npm run build` with publish directory `dist`
-
-**Any other static host**
-Upload the contents of `dist/` — it's plain HTML/CSS/JS with no server requirements.
 
 ---
 
