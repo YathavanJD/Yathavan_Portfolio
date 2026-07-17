@@ -12,7 +12,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/yathavan-loganathan03/",
   instagram: "https://www.instagram.com/jdyathu/",
   photo:
-    "https://yathavanjd.github.io/Yathavan_Portfolio/assets/image/profile.jpeg",
+    "/Yathavn.jpeg",
   stats: [
     { value: "13", label: "repos shipped" },
     { value: "10+", label: "full-stack projects" },
