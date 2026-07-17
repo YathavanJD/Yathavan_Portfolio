@@ -11,8 +11,7 @@ export const profile = {
   github: "https://github.com/YathavanJD",
   linkedin: "https://www.linkedin.com/in/yathavan-loganathan03/",
   instagram: "https://www.instagram.com/jdyathu/",
-  photo:
-    "/Yathavn.jpeg",
+  photo:"/Yathavn.jpeg",
   stats: [
     { value: "13", label: "repos shipped" },
     { value: "10+", label: "full-stack projects" },
