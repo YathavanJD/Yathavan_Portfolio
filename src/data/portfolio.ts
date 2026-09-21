@@ -2,7 +2,7 @@ export const profile = {
   name: "Loganathan Yathavan",
   role: "Software Engineer",
   tagline:
-    "Final-year Computer Science undergraduate building full-stack web and mobile applications — with a growing focus on backend engineering and Java/Spring Boot.",
+    "Computer Science graduate building full-stack web and mobile applications — with a growing focus on backend engineering and Java/Spring Boot.",
   subline: "I ship things end to end, then go find out why they broke.",
   location: "Colombo, Sri Lanka",
   status: "Open to work",
@@ -22,7 +22,7 @@ export const profile = {
 export const about = {
   heading:
     "I like systems that are simple to explain and hard to break — and I'm still learning how to build those consistently.",
-  body: "I'm a final-year BSc (Hons) Computer Science student at SLIIT City University, with hands-on experience across Java, JavaScript, and PHP — building everything from Android ride-booking apps to AI-powered emotion-detection platforms. I care about the unglamorous parts: clean database design, test cases that actually catch bugs, and code a teammate can read at 11pm before a deadline. Right now I'm deepening my backend skills with Spring Boot and getting comfortable with the DevOps tooling that turns a student project into something deployable.",
+  body: "I'm a BSc (Hons) Computer Science graduate, with hands-on experience across Java, JavaScript, and PHP — building everything from Android ride-booking apps to AI-powered emotion-detection platforms. I care about the unglamorous parts: clean database design, test cases that actually catch bugs, and code a teammate can read at 11pm before a deadline. Right now I'm deepening my backend skills with Spring Boot and getting comfortable with the DevOps tooling that turns a student project into something deployable.",
 };
 
 export const skillGroups = [
