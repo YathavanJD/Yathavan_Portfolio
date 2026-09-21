@@ -242,9 +242,9 @@ export const featuredProjectIds = [
 
 export const timeline = [
   {
-    date: "Expected Sep 2026",
-    tag: "final year",
-    title: "BSc (Hons) Computer Science — SLIIT City University",
+    date: " Sep 2025 - Sep 2026",
+    tag: "Completed",
+    title: "BSc (Hons) Computer Science",
     body: "Software engineering, full-stack development, and database systems coursework, with applied modules in AI fundamentals, networking, and software testing.",
   },
   {
@@ -288,7 +288,7 @@ export const heroScenes = [
     id: "boot",
     tag: "[BOOT]",
     heading: "I ship things end to end,",
-    sub: "Final-year Computer Science undergraduate · SLIIT City University",
+    sub: "Computer Science graduate ·",
   },
   {
     id: "build",
