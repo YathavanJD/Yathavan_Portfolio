@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yathavan-portfolio.onrender.com/sitemap.xml
