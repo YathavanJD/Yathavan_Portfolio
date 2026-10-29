@@ -1,0 +1,421 @@
+@import "@fontsource-variable/space-grotesk/index.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   DESIGN TOKENS — "The Digital Systems Architect"
+   65% ivory · 25% navy · 7% lime · 3% teal
+   ─────────────────────────────────────────────────────────────── */
+@theme {
+  --color-ivory: #f5f5f0;
+  --color-navy: #101827;
+  --color-lime: #b7f34a;
+  --color-teal: #36cfc9;
+  --color-slate: #687386; /* spec "muted slate": large text, rules, decoration */
+  --color-hair: #dce0d9; /* spec "light border" */
+  --color-paper: #ffffff;
+  --color-navy-line: #28364a; /* spec "dark panel border" */
+
+  /* Contrast-safe derivatives (documented in README):
+     slate #687386 is 4.3:1 on ivory — fine for large text, short of AA for small text. */
+  --color-slate-ink: #4d586b; /* 6.4:1 on ivory — small body/meta text */
+  --color-teal-ink: #0d6f6a; /* 5.5:1 on ivory — teal as small text on light */
+  --color-navy-soft: #1a2538; /* slightly lifted panel surface */
+
+  --font-display: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html {
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  /* Guard against stray horizontal overflow without breaking pinning. */
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--color-lime);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ───────────────────────── Typography ───────────────────────── */
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .container-x {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+  }
+
+  .section-pad {
+    padding-block: clamp(5rem, 11vw, 10rem);
+  }
+
+  /* Compact uppercase technical label */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .t-hero {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.45rem, 6.1vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5.6vw, 5.25rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .t-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .t-lede {
+    font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+    line-height: 1.65;
+    max-width: 38rem;
+  }
+
+  /* Outlined section numeral */
+  .numeral {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(4rem, 12vw, 10rem);
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--numeral-stroke, #c7c9c8);
+    user-select: none;
+  }
+
+  /* ───────────────────────── Buttons ───────────────────────── */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 0.35s var(--ease-out-expo),
+      color 0.35s var(--ease-out-expo),
+      border-color 0.35s var(--ease-out-expo),
+      transform 0.35s var(--ease-out-expo);
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn[aria-disabled="true"],
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .btn-lime {
+    background: var(--color-lime);
+    color: var(--color-navy);
+    border-color: var(--color-lime);
+  }
+  .btn-lime:hover {
+    background: var(--color-navy);
+    color: var(--color-lime);
+    border-color: var(--color-navy);
+  }
+  .on-dark .btn-lime:hover {
+    background: var(--color-ivory);
+    color: var(--color-navy);
+    border-color: var(--color-ivory);
+  }
+  .btn-ghost {
+    color: var(--color-navy);
+    border-color: color-mix(in srgb, var(--color-navy) 28%, transparent);
+  }
+  .btn-ghost:hover {
+    background: var(--color-navy);
+    color: var(--color-ivory);
+    border-color: var(--color-navy);
+  }
+  .on-dark .btn-ghost {
+    color: var(--color-ivory);
+    border-color: color-mix(in srgb, var(--color-ivory) 32%, transparent);
+  }
+  .on-dark .btn-ghost:hover {
+    background: var(--color-ivory);
+    color: var(--color-navy);
+    border-color: var(--color-ivory);
+  }
+
+  /* Masked / underline link */
+  .link-u {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 0.45s var(--ease-out-expo);
+    padding-bottom: 2px;
+  }
+  .link-u:hover,
+  .link-u:focus-visible,
+  .link-u[aria-current="true"] {
+    background-size: 100% 1px;
+  }
+
+  /* Technical tag / chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 1.75rem;
+    padding: 0 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-hair);
+    background: var(--color-paper);
+    color: var(--color-slate-ink);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .on-dark .chip {
+    background: transparent;
+    border-color: var(--color-navy-line);
+    color: color-mix(in srgb, var(--color-ivory) 78%, transparent);
+  }
+
+  /* Faint coordinate grid */
+  .bg-grid-light {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-navy) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-navy) 6%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-ivory) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-ivory) 6%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* ─────────────── SVG data-flow motion (CSS-only, cheap) ─────────────── */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.flow-line {
+  stroke-dasharray: 3 9;
+  animation: flow 1.6s linear infinite;
+}
+.spin-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-slow 90s linear infinite;
+}
+.spin-slower {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-slow 140s linear infinite reverse;
+}
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+.blink {
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-line,
+  .spin-slow,
+  .spin-slower,
+  .pulse-ring,
+  .blink {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─────────────── Hero system-map + stage states ─────────────── */
+.map-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.node-dot {
+  fill: #f5f5f0;
+  stroke: #36cfc9;
+  stroke-width: 1.5;
+  transition: fill 0.5s var(--ease-out-expo), r 0.5s var(--ease-out-expo);
+}
+.hero[data-stage="1"] .map-node[data-stage="1"] .node-dot,
+.hero[data-stage="2"] .map-node[data-stage="2"] .node-dot,
+.hero[data-stage="3"] .map-node[data-stage="3"] .node-dot,
+.hero[data-stage="4"] .map-node[data-stage="4"] .node-dot {
+  fill: #b7f34a;
+  stroke: #b7f34a;
+}
+.map-label {
+  fill: #f5f5f0;
+  opacity: 0.75;
+  transition: opacity 0.4s;
+}
+.hero[data-stage="1"] .map-node[data-stage="1"] .map-label,
+.hero[data-stage="2"] .map-node[data-stage="2"] .map-label,
+.hero[data-stage="3"] .map-node[data-stage="3"] .map-label,
+.hero[data-stage="4"] .map-node[data-stage="4"] .map-label {
+  opacity: 1;
+  fill: #b7f34a;
+}
+
+.stage-step {
+  position: relative;
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+.hero[data-stage="1"] .stage-step[data-n="1"],
+.hero[data-stage="2"] .stage-step[data-n="2"],
+.hero[data-stage="3"] .stage-step[data-n="3"],
+.hero[data-stage="4"] .stage-step[data-n="4"] {
+  opacity: 1;
+}
+
+/* ─────────────── Timeline ─────────────── */
+/* NB: no CSS transform transitions here — GSAP owns the node's scale tween. */
+.tl-node {
+  transition:
+    background-color 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo);
+}
+.tl-item.is-active .tl-node {
+  background: var(--color-lime);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-lime) 40%, transparent);
+}
+.tl-item .tl-date {
+  transition: color 0.4s;
+}
+.tl-item.is-active .tl-date {
+  color: var(--color-navy);
+}
+.tl-title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 3rem;
+  margin-top: 0.6rem;
+  background: var(--color-lime);
+  box-shadow: 0 0 0 0.5px var(--color-navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition:
+    transform 0.7s var(--ease-out-expo),
+    opacity 0.3s;
+}
+.tl-item.is-active .tl-title::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
